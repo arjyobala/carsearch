@@ -2,20 +2,26 @@ import Card from "./components/ContentCard";
 import SearchBar from "./components/SearchBar";
 import styled from "styled-components";
 
-const SearchContainer = styled.div`
-  width: 50vw;
+const Container = styled.div`
+  width: 90vw;
   margin: auto;
+  padding: 20px;
+  background: #d8dbfc;
+`;
+
+const AppTitle = styled.h1`
+  text-align: center;
+  font-weight: 700;
+  font-size: 45px;
 `;
 
 function App() {
   return (
-    <div className="App">
-      <SearchContainer>
-        <SearchBar />
-      </SearchContainer>
-
+    <Container>
+      <AppTitle>Car Search</AppTitle>
+      <SearchBar />
       <Card />
-    </div>
+    </Container>
   );
 }
 
