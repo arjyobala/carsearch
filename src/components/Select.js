@@ -1,22 +1,35 @@
 import React from "react";
 import { Select as AntSelect } from "antd";
+import styled from "styled-components";
 
 const { Option } = AntSelect;
 
-const Select = () => {
+const StyledSelect = styled(AntSelect)`
+  @media (max-width: 768px) {
+    width: 50% !important;
+  }
+`;
+
+const Select = ({ options, filterOption, filterSort }) => {
   return (
-    <AntSelect
+    <StyledSelect
+      options={options}
+      optionFilterProp="children"
+      filterOption={filterOption}
+      filterSort={filterSort}
       defaultValue="lucy"
       style={{ width: 120 }}
       //   onChange={handleChange}
     >
-      <Option value="jack">Jack</Option>
-      <Option value="lucy">Lucy</Option>
-      <Option value="disabled" disabled>
-        Disabled
-      </Option>
-      <Option value="Yiminghe">yiminghe</Option>
-    </AntSelect>
+      {/* {options.map((item, index) => (
+        {item.make_name}
+      ))} */}
+      {options.map((item, index) => (
+        <Option key={item.Make_ID} value={item.Make_Name}>
+          {item.Make_Name}
+        </Option>
+      ))}
+    </StyledSelect>
   );
 };
 
