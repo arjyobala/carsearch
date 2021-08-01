@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Card from "../components/ContentCard";
 import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
-import axios from "axios";
-
+import { getUsers } from "../state/actions";
 const Container = styled.div`
   width: 90vw;
   margin: auto;
@@ -20,23 +20,13 @@ const AppTitle = styled.h1`
 const url = "https://vpic.nhtsa.dot.gov/api/";
 
 const Home = (props) => {
+  const dispatch = useDispatch();
   const [data, setData] = useState();
   const [makes, setMakes] = useState();
 
-  const getAllTypes = () => {
-    axios
-      .get(`${url}vehicles/GetAllMakes?format=json`)
-      .then((res) => setData(res.data.Results))
-      .catch((err) => console.error(err));
-  };
-
   useEffect(() => {
-    getAllTypes();
+    dispatch(getUsers());
   }, []);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <Container>

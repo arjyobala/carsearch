@@ -19,17 +19,7 @@ const Select = ({ options, filterOption, filterSort }) => {
       filterSort={filterSort}
       defaultValue="lucy"
       style={{ width: 120 }}
-      //   onChange={handleChange}
-    >
-      {/* {options.map((item, index) => (
-        {item.make_name}
-      ))} */}
-      {options.map((item, index) => (
-        <Option key={item.Make_ID} value={item.Make_Name}>
-          {item.Make_Name}
-        </Option>
-      ))}
-    </StyledSelect>
+    ></StyledSelect>
   );
 };
 
