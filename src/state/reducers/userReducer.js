@@ -12,7 +12,7 @@ const userReducer = createReducer(
   {},
   {
     [types.GET_USERS_FULFILLED]: (state, action) => {
-      state.users = action.payload;
+      state.usersList = action.payload;
     },
     [types.GET_USERS_REJECTED]: (state, action) => {
       console.log(action.payload);

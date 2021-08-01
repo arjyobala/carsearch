@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/ContentCard";
 import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
-import { getUsers } from "../state/actions";
+import { getCarList, getUsers } from "../state/actions";
 const Container = styled.div`
   width: 90vw;
   margin: auto;
@@ -17,21 +17,19 @@ const AppTitle = styled.h1`
   font-size: 45px;
 `;
 
-const url = "https://vpic.nhtsa.dot.gov/api/";
-
 const Home = (props) => {
   const dispatch = useDispatch();
-  const [data, setData] = useState();
-  const [makes, setMakes] = useState();
+  const carList = useSelector((state) => state.cars.carList);
 
   useEffect(() => {
     dispatch(getUsers());
+    dispatch(getCarList());
   }, []);
 
   return (
     <Container>
       <AppTitle>Car Search</AppTitle>
-      <SearchBar makes={data} />
+      <SearchBar makes={carList} />
       <Card />
     </Container>
   );
