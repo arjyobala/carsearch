@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const StyledButton = styled(AntButton)`
   background: #287c55;
+  width: 150px;
 `;
 
 const Button = ({ label, type }) => {

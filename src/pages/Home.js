@@ -4,7 +4,7 @@ import Card from "../components/ContentCard";
 import SearchBar from "../components/SearchBar";
 import Select from "../components/Select/Select";
 import styled from "styled-components";
-import { getCarList, getUsers } from "../state/actions";
+import { getCarList, getUsers, getCarModels } from "../state/actions";
 import UserCard from "../components/UserCard";
 import { Form } from "antd";
 import Button from "../components/Button/Button";
@@ -33,14 +33,21 @@ const FormContainer = styled.div`
 const Home = (props) => {
   const dispatch = useDispatch();
   const carList = useSelector((state) => state.cars.carList);
+  const carModels = useSelector((state) => state.cars.carModels);
   const users = useSelector((state) => state.users.usersList);
+
+  const [makeId, SetCarMakeId] = useState(null);
 
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getCarList());
   }, []);
 
-  const handleChange = () => {};
+  const handleChange = (value) => {
+    SetCarMakeId(value);
+    console.log(value);
+    dispatch(getCarModels(value));
+  };
 
   return (
     <Container>
@@ -58,8 +65,16 @@ const Home = (props) => {
               }
             />
           </Form.Item>
-          <Form.Item label="Enter Car Make" name="make">
-            <Select options={carList} onChange={handleChange} />
+          <Form.Item label="Enter Car Model" name="make">
+            <Select
+              options={carModels}
+              onChange={handleChange}
+              placeholder="Select a Car model"
+              optionFilterProp="children"
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            />
           </Form.Item>
           <Form.Item>
             <Button label="Submit" />

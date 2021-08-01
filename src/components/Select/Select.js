@@ -30,7 +30,7 @@ const Select = ({
     >
       {options
         ? options.map((item, index) => (
-            <Option key={index + 1} value={item.value}>
+            <Option key={index + 1} value={item.id}>
               {item.value}
             </Option>
           ))

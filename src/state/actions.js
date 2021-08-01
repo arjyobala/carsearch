@@ -34,3 +34,20 @@ export const getCarList = () => async (dispatch) => {
     });
   }
 };
+
+export const getCarModels = (makeId) => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      `${vehicleUrl}/vehicles/GetModelsForMakeId/${makeId}?format=json`
+    );
+    dispatch({
+      type: types.GET_CAR_MODELS_FULFILLED,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: types.GET_CAR_MODELS_REJECTED,
+      payload: console.log(e),
+    });
+  }
+};
