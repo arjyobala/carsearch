@@ -7,9 +7,14 @@ const StyledButton = styled(AntButton)`
   width: 150px;
 `;
 
-const Button = ({ label, type }) => {
+const Button = ({ label, type, disabled, onClick }) => {
   return (
-    <StyledButton shape="round" type={type}>
+    <StyledButton
+      shape="round"
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {label}
     </StyledButton>
   );

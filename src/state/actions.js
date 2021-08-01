@@ -35,10 +35,10 @@ export const getCarList = () => async (dispatch) => {
   }
 };
 
-export const getCarModels = (makeId) => async (dispatch) => {
+export const getCarModels = (makeName) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `${vehicleUrl}/vehicles/GetModelsForMakeId/${makeId}?format=json`
+      `${vehicleUrl}/vehicles/GetModelsForMake/${makeName}?format=json`
     );
     dispatch({
       type: types.GET_CAR_MODELS_FULFILLED,
@@ -47,6 +47,21 @@ export const getCarModels = (makeId) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: types.GET_CAR_MODELS_REJECTED,
+      payload: console.log(e),
+    });
+  }
+};
+
+export const getDogPhoto = () => async (dispatch) => {
+  try {
+    const res = await axios.get(`https://dog.ceo/api/breeds/image/random`);
+    dispatch({
+      type: types.GET_DOG_PHOTO_FULFILLED,
+      payload: res.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: types.GET_DOG_PHOTO_REJECTED,
       payload: console.log(e),
     });
   }

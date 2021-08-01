@@ -17,10 +17,12 @@ const Select = ({
   optionFilterProp,
   onChange,
   placeholder,
+  allowClear,
 }) => {
   return (
     <StyledSelect
       showSearch
+      allowClear={allowClear}
       placeholder={placeholder}
       optionFilterProp={optionFilterProp}
       filterOption={filterOption}
@@ -30,7 +32,7 @@ const Select = ({
     >
       {options
         ? options.map((item, index) => (
-            <Option key={index + 1} value={item.id}>
+            <Option key={index + 1} value={item.value}>
               {item.value}
             </Option>
           ))
