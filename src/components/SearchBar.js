@@ -1,7 +1,6 @@
 import React from "react";
-import { Input } from "antd";
+import { Input, Select } from "antd";
 import styled from "styled-components";
-import Select from "./Select";
 import Button from "./Button";
 
 const SearchContainer = styled.div`
@@ -17,16 +16,20 @@ const SearchContainer = styled.div`
 `;
 
 const StyledSelect = styled(Select)`
+  width: 400px;
   @media (max-width: 768px) {
-    width: 50% !important;
+    width: 200px !important;
   }
 `;
+
+const { Option } = Select;
+
 const SearchBar = ({ makes }) => {
+  console.log(makes);
   return (
     <SearchContainer>
       <StyledSelect
         showSearch
-        options={makes}
         optionFilterProp="children"
         filterOption={(input, option) =>
           option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -36,9 +39,8 @@ const SearchBar = ({ makes }) => {
             .toLowerCase()
             .localeCompare(optionB.children.toLowerCase())
         }
-      />
-      <StyledSelect />
-      <styledSelect />
+      ></StyledSelect>
+
       <Button label="Search" />
     </SearchContainer>
   );
