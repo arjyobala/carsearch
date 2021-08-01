@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input, Select } from "antd";
 import styled from "styled-components";
-import Button from "./Button";
+import Button from "./Button/Button";
 
 const SearchContainer = styled.div`
   display: flex;
@@ -25,11 +25,20 @@ const StyledSelect = styled(Select)`
 const { Option } = Select;
 
 const SearchBar = ({ makes }) => {
-  console.log(makes);
+  const [value, setValue] = useState(null);
+
+  const handleChange = (value) => {
+    setValue(value);
+    console.log(value);
+  };
+
   return (
     <SearchContainer>
       <StyledSelect
+        value={value}
+        onChange={handleChange}
         showSearch
+        allowClear
         options={makes}
         optionFilterProp="children"
         filterOption={(input, option) =>
@@ -40,7 +49,7 @@ const SearchBar = ({ makes }) => {
             .toLowerCase()
             .localeCompare(optionB.children.toLowerCase())
         }
-      ></StyledSelect>
+      />
 
       <Button label="Search" />
     </SearchContainer>

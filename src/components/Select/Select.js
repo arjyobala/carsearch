@@ -10,20 +10,28 @@ const StyledSelect = styled(AntSelect)`
   }
 `;
 
-const Select = ({ options, filterOption, filterSort }) => {
+const Select = ({
+  options,
+  filterOption,
+  filterSort,
+  optionFilterProp,
+  onChange,
+  placeholder,
+}) => {
   return (
     <StyledSelect
-      options={options}
-      optionFilterProp="children"
+      showSearch
+      placeholder={placeholder}
+      optionFilterProp={optionFilterProp}
       filterOption={filterOption}
       filterSort={filterSort}
-      defaultValue="lucy"
-      style={{ width: 120 }}
+      style={{ width: 300 }}
+      onChange={onChange}
     >
       {options
-        ? options.map((item) => (
-            <Option key={item.Make_ID} value={item.Make_Name}>
-              {item.Make_Name}
+        ? options.map((item, index) => (
+            <Option key={index + 1} value={item.value}>
+              {item.value}
             </Option>
           ))
         : null}
