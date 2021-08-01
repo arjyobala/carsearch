@@ -83,7 +83,7 @@ const Home = (props) => {
   return (
     <Container>
       <AppTitle>Car Search</AppTitle>
-      <PhotoButton onClick={getPhoto}>See a dog</PhotoButton>
+      <PhotoButton onClick={getPhoto}>Bored?</PhotoButton>
       <Form layout="vertical">
         <FormContainer>
           <Form.Item label="Enter Car Make" name="make">
@@ -125,7 +125,7 @@ const Home = (props) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <img src={dogPhoto} alt="" />
+        <img style={{ maxWidth: "100%" }} src={dogPhoto} alt="" />
       </Modal>
       <Content data={carModels} make={makeName} />
     </Container>
