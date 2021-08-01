@@ -20,11 +20,13 @@ const Select = ({ options, filterOption, filterSort }) => {
       defaultValue="lucy"
       style={{ width: 120 }}
     >
-      {/* {options.map((item) => (
-        <Option key={item.Make_ID} value={item.Make_Name}>
-          {item.Make_Name}
-        </Option>
-      ))} */}
+      {options
+        ? options.map((item) => (
+            <Option key={item.Make_ID} value={item.Make_Name}>
+              {item.Make_Name}
+            </Option>
+          ))
+        : null}
     </StyledSelect>
   );
 };

@@ -30,6 +30,7 @@ const SearchBar = ({ makes }) => {
     <SearchContainer>
       <StyledSelect
         showSearch
+        options={makes}
         optionFilterProp="children"
         filterOption={(input, option) =>
           option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
