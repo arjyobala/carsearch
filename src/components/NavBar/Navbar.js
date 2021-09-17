@@ -23,7 +23,7 @@ const NavLinks = styled.div`
 
 const Navbar = () => {
   return (
-    <Nav>
+    <Nav data-testid="required-navbar">
       <AppTitle>Car Search</AppTitle>
       <NavLinks>
         <Link to="/">Home</Link>
