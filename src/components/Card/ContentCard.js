@@ -2,7 +2,7 @@ import React from "react";
 
 const ContentCard = ({ make, model }) => {
   return (
-    <div>
+    <div data-testid="cardetails">
       {make}
       {model.value}
     </div>

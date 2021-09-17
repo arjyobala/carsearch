@@ -14,6 +14,7 @@ const Button = ({ label, type, disabled, onClick }) => {
       type={type}
       disabled={disabled}
       onClick={onClick}
+      data-testid="button"
     >
       {label}
     </StyledButton>
@@ -24,4 +25,5 @@ export default Button;
 
 Button.defaultProps = {
   type: "primary",
+  disabled: false,
 };

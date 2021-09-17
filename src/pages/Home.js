@@ -82,9 +82,11 @@ const Home = (props) => {
   const handleFinish = () => {};
   return (
     <Container>
-      <AppTitle>Car Search</AppTitle>
-      <PhotoButton onClick={getPhoto}>Bored?</PhotoButton>
-      <Form layout="vertical">
+      <AppTitle data-testid="required-header">Car Search</AppTitle>
+      <PhotoButton data-testid="photo-button" onClick={getPhoto}>
+        Bored?
+      </PhotoButton>
+      <Form layout="vertical" data-testid="required-form">
         <FormContainer>
           <Form.Item label="Enter Car Make" name="make">
             <Select
@@ -127,7 +129,7 @@ const Home = (props) => {
       >
         <img style={{ maxWidth: "100%" }} src={dogPhoto} alt="" />
       </Modal>
-      <Content data={carModels} make={makeName} />
+      <Content data={carModels} make={makeName} data-testid="data-content" />
     </Container>
   );
 };
