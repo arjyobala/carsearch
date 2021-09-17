@@ -5,17 +5,19 @@ import Navbar from "./components/NavBar/Navbar";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/about">
-          <About demoby="Arjyo" />
-        </Route>
-      </Switch>
-    </Router>
+    <>
+      <Router>
+        <Navbar title="Car Search" />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 

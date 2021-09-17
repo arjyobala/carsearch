@@ -17,11 +17,11 @@ test("Name is present", () => {
   expect(element).toBeInTheDocument();
 });
 
-test("Button is present", async () => {
-  render(<About demoby="Max" />);
-  const element = screen.getByTestId("button");
-  expect(element).toBeInTheDocument();
-});
+// test("Button is present", async () => {
+//   render(<About demoby="Max" />);
+//   const element = screen.getByTestId("button");
+//   expect(element).toBeInTheDocument();
+// });
 
 // test("Button click", async () => {
 //   render(<About demoby="Max" />);
