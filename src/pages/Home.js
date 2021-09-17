@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Content from "../components/Content";
 import Select from "../components/Select/Select";
@@ -12,18 +13,12 @@ import {
 import UserCard from "../components/UserCard";
 import { Form, Modal } from "antd";
 import Button from "../components/Button/Button";
+import Navbar from "../components/NavBar/Navbar";
 
 const Container = styled.div`
   width: 90vw;
   margin: auto;
   padding: 20px;
-`;
-
-const AppTitle = styled.h1`
-  text-align: center;
-  font-weight: 700;
-  font-size: 45px;
-  background: lightblue;
 `;
 
 const FormContainer = styled.div`
@@ -35,11 +30,15 @@ const FormContainer = styled.div`
 `;
 
 const PhotoButton = styled.button`
-  padding: 20px;
-  background: #d5a8ff;
+  padding: 20px 40px;
+  background: #9184d8;
+  border: 2px solid black;
   margin-bottom: 2rem;
   position: absolute;
+  border-radius: 15px;
   right: 100px;
+  color: #fff;
+  font-size: 16px;
 `;
 
 const Home = (props) => {
@@ -52,11 +51,19 @@ const Home = (props) => {
   const [modelName, setModelName] = useState(null);
   const [showPhoto, setShowPhoto] = useState(false);
 
+  //Implement useCallback
+  const getAllCars = useCallback(() => {
+    dispatch(getCarList());
+  });
+
+  //Initial call to get and car list and user list
   useEffect(() => {
     dispatch(getUsers());
-    dispatch(getCarList());
+    getAllCars();
+    // dispatch(getCarList());
   }, []);
 
+  //Change handler for select dropdown options
   const handleChange = (value) => {
     SetCarMakeName(value);
     dispatch(getCarModels(value));
@@ -66,25 +73,28 @@ const Home = (props) => {
     setModelName(value);
   };
 
+  //Dispatch photo getter and set modal visibility state param
   const getPhoto = () => {
     dispatch(getDogPhoto());
     setShowPhoto(true);
   };
 
+  //Handler to open new photo display
   const handleOk = () => {
     setShowPhoto(false);
   };
 
+  //Handler to cancel photo display modal
   const handleCancel = () => {
     setShowPhoto(false);
   };
 
+  //Complete with action to dispatch selection
   const handleFinish = () => {};
   return (
     <Container>
-      <AppTitle data-testid="required-header">Car Search</AppTitle>
       <PhotoButton data-testid="photo-button" onClick={getPhoto}>
-        Bored?
+        Click me
       </PhotoButton>
       <Form layout="vertical" data-testid="required-form">
         <FormContainer>
@@ -111,13 +121,13 @@ const Home = (props) => {
               }
             />
           </Form.Item> */}
-          <Form.Item>
+          {/* <Form.Item>
             <Button
               label="Submit"
               disabled={!modelName}
               onFinish={handleFinish}
             />
-          </Form.Item>
+          </Form.Item> */}
         </FormContainer>
       </Form>
 

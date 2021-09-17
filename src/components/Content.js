@@ -22,7 +22,7 @@ const Content = ({ data, make }) => {
               <Card
                 key={item.id}
                 title={make}
-                headStyle={{ background: "#6addc7" }}
+                headStyle={{ background: "#adb9ff" }}
               >
                 {item.value}
               </Card>
