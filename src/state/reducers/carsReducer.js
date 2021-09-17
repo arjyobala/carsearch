@@ -1,12 +1,10 @@
 import * as types from "../types";
 import { createReducer } from "@reduxjs/toolkit";
-import { List } from "antd";
 
 const carsReducer = createReducer(
   {},
   {
     [types.GET_CAR_MAKES_FULFILLED]: (state, action) => {
-      // state.carList = action.payload.Results;
       const list = action.payload.Results.map((item) => {
         const makes = {};
         makes.value = item.Make_Name;
@@ -19,7 +17,6 @@ const carsReducer = createReducer(
       console.log(action.payload);
     },
     [types.GET_CAR_MODELS_FULFILLED]: (state, action) => {
-      // state.carList = action.payload.Results;
       const list = action.payload.Results.map((item) => {
         const models = {};
         models.value = item.Model_Name;
