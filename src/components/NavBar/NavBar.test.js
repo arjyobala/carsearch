@@ -10,6 +10,7 @@ test("Navbar has title", () => {
       <NavBar title="Car Search" />
     </Router>
   );
+  expect(screen.getByTestId("required-navbar-title")).toBeInTheDocument();
   expect(screen.getByTestId("required-navbar-title")).toHaveTextContent(
     "Car Search"
   );
