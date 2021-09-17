@@ -24,7 +24,10 @@ const About = ({ demoby, heading }) => {
           Redux reducer architecture, data population and React Testing Library
         </li>
         <li>React-redux useSelector and useDispatch</li>
-        <li>Search component for car selection from fetched array</li>
+        <li>
+          Search component for car selection from fetched array, local storage
+          usage
+        </li>
         <li>Modal implementation for random photo fetching</li>
       </ul>
 

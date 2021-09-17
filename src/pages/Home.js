@@ -60,12 +60,21 @@ const Home = (props) => {
   useEffect(() => {
     dispatch(getUsers());
     getAllCars();
-    // dispatch(getCarList());
+  }, []);
+
+  //check local storage on each render for previously selected car make
+  useEffect(() => {
+    const selectedMake = localStorage.getItem("carmake");
+    if (selectedMake != null) {
+      SetCarMakeName(selectedMake);
+    }
   }, []);
 
   //Change handler for select dropdown options
   const handleChange = (value) => {
     SetCarMakeName(value);
+    //store selection to local storage
+    localStorage.setItem("carmake", value);
     dispatch(getCarModels(value));
   };
 
@@ -103,6 +112,7 @@ const Home = (props) => {
               options={carList}
               onChange={handleChange}
               placeholder="Select a Car make"
+              defaultValue={makeName}
               optionFilterProp="children"
               filterOption={(input, option) =>
                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
