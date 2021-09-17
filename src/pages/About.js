@@ -9,17 +9,20 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const About = ({ demoby, heading }) => {
+const About = () => {
   // const handleClick = () => {
   //   alert("clicked!");
   // };
 
   return (
     <Container>
-      <h1 data-testid="required-header">{heading}</h1>
-      <div data-testid="name-2">Demo app by {demoby}</div>
+      <h1 data-testid="required-header">Contents</h1>
+      <div data-testid="required-name">Demo app by Arjyo</div>
       <br />
-      <ul style={{ width: "40vw", margin: "auto" }}>
+      <ul
+        style={{ width: "40vw", margin: "auto" }}
+        data-testid="required-content"
+      >
         <li>
           Redux reducer architecture, data population and React Testing Library
         </li>

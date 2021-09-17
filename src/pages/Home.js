@@ -39,6 +39,7 @@ const PhotoButton = styled.button`
   right: 100px;
   color: #fff;
   font-size: 16px;
+  cursor: pointer;
 `;
 
 const Home = (props) => {
