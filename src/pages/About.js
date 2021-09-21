@@ -31,7 +31,9 @@ const About = () => {
     <Container>
       <h1 data-testid="required-header">Contents</h1>
       <div data-testid="required-name">Demo app by Arjyo</div>
-      <p>{carModel}</p>
+      <p>
+        MANUFACTURER : <span style={{ fontWeight: "700" }}>{carModel}</span>
+      </p>
       <br />
       <ul
         style={{ width: "40vw", margin: "auto" }}
