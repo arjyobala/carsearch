@@ -46,6 +46,7 @@ const About = () => {
           usage
         </li>
         <li>Modal implementation for random photo fetching</li>
+        <li>Multi tab data sync</li>
       </ul>
 
       {/* <Button onClick={handleClick} label="Button" /> */}
