@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 import Button from "../components/Button/Button";
 
 const Container = styled.div`
@@ -10,14 +11,27 @@ const Container = styled.div`
 `;
 
 const About = () => {
+  const model = localStorage.getItem("carmake");
+  const [carModel, setCarModel] = useState("");
+  const selectedModel = useSelector((state) => state.cars.carModels);
   // const handleClick = () => {
   //   alert("clicked!");
   // };
+  useEffect(() => {
+    if (selectedModel) {
+      console.log(selectedModel[0].value);
+    }
+  }, [selectedModel]);
+
+  useEffect(() => {
+    setCarModel(model);
+  }, [selectedModel, model]);
 
   return (
     <Container>
       <h1 data-testid="required-header">Contents</h1>
       <div data-testid="required-name">Demo app by Arjyo</div>
+      <p>{carModel}</p>
       <br />
       <ul
         style={{ width: "40vw", margin: "auto" }}
